@@ -1,8 +1,8 @@
 import React from 'react';
 import { Component } from 'react';
-import { Text } from 'react-native';
+import { StyleSheet } from 'react-native';
+import { LineChart } from 'react-native-svg-charts'
 import { connect } from 'react-redux';
-import styled from 'styled-components/native';
 
 import * as actions from 'src/Prices/actions';
 import { Trade } from 'src/Prices/types';
@@ -13,11 +13,11 @@ interface Props {
   fetchTrades: (pair: string) => void;
 }
 
-const TradesView = styled.View`
-`;
-
-const TradeView = styled.View`
-`;
+const styles = StyleSheet.create({
+  graph: {
+    height: 200
+  }
+});
 
 export class Graph extends Component<Props> {
   componentDidMount() {
@@ -26,14 +26,12 @@ export class Graph extends Component<Props> {
 
   render() {
     return (
-      <TradesView>{
-        this.props.trades.map(trade => (
-          <TradeView key={trade.time}>
-            <Text>{trade.price}</Text>
-            <Text>{trade.time}</Text>
-          </TradeView>
-        ))
-      }</TradesView>
+      <LineChart
+        style={styles.graph}
+        data={this.props.trades.map(trade => trade.price)}
+        svg={{ stroke: 'rgb(82, 73, 208)' }}
+        contentInset={{ top: 20, bottom: 20 }}
+      ></LineChart>
     );
   }
 }
