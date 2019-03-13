@@ -3,6 +3,7 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
+    "lint": "eslint --cache src",
     "start": "node node_modules/react-native/local-cli/cli.js start",
     "test": "jest"
   },
@@ -13,7 +14,11 @@
   "devDependencies": {
     "@babel/core": "^7.3.4",
     "@babel/runtime": "^7.3.4",
+    "babel-eslint": "^10.0.1",
     "babel-jest": "^24.5.0",
+    "eslint": "^5.15.1",
+    "eslint-plugin-react": "^7.12.4",
+    "eslint-plugin-react-native": "^3.6.0",
     "jest": "^24.5.0",
     "metro-react-native-babel-preset": "^0.53.0",
     "react-test-renderer": "16.8.3"
