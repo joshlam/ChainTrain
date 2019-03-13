@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
 
-const dummyReducer = (state = {}) => state;
+import prices from 'src/Prices/reducer';
 
-export default combineReducers({ dummyReducer });
+export default combineReducers({ prices });

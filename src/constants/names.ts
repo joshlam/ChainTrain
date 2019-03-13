@@ -1,0 +1,21 @@
+export default Object.freeze({
+  ADA: 'Cardano',
+  BCH: 'Bitcoin Cash',
+  BSV: 'Bitcoin SV',
+  DASH: 'Dash',
+  ETC: 'Ethereum Classic',
+  ETH: 'Ethereum',
+  GNO: 'Gnosis',
+  LTC: 'Litecoin',
+  MLN: 'Melon',
+  QTUM: 'QTUM',
+  REP: 'Augur',
+  USDT: 'Tether',
+  XBT: 'Bitcoin',
+  XDG: 'Dogecoin',
+  XLM: 'Stellar Lumens',
+  XMR: 'Monero',
+  XRP: 'Ripple',
+  XTZ: 'Tezos',
+  ZEC: 'Zcash'
+});

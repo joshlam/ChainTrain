@@ -1,4 +1,4 @@
-export default {
+export default Object.freeze({
   XBT: require('src/icons/XBT.png'),
   USDT: require('src/icons/USDT.png'),
   XRP: require('src/icons/XRP.png'),
@@ -20,4 +20,4 @@ export default {
   XTZ: require('src/icons/XTZ.png'),
   ETC: require('src/icons/ETC.png'),
   logo: require('src/icons/logo.png')
-};
+});

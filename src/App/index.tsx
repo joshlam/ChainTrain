@@ -1,15 +1,15 @@
 import React from 'react';
 import { Component } from 'react';
-import {View} from 'react-native';
+import styled from 'styled-components/native';
 
-interface Props {
+import Prices from 'src/Prices';
 
-}
+const Background = styled.View`
+  backgroundColor: #e8e8e8
+`;
 
-export default class App extends Component<Props> {
+export default class App extends Component {
   render() {
-    return (
-      <View></View>
-    );
+    return <Background><Prices /></Background>;
   }
 }

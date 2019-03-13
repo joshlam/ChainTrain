@@ -10,7 +10,7 @@ interface NamespacedTypes {
  *
  * @returns {Object} Action types.
  */
-function namespacedTypes(namespace: string, actionTypes: string[]) {
+function namespacedTypes(namespace: string, actionTypes: string[]): NamespacedTypes {
   return actionTypes.reduce((actions: NamespacedTypes, actionType: string) => {
     actions[actionType] = `${namespace}:${actionType}`;
 

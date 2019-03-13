@@ -1,7 +1,15 @@
-import { createStore } from 'redux';
+import { applyMiddleware, createStore } from 'redux';
+import thunkMiddleware from 'redux-thunk';
 
 import reducer from 'src/store/reducer';
+import { PricesState } from 'src/Prices/types';
 
-const configureStore = initialState => createStore(reducer, initialState);
+interface ApplicationState {
+  prices: PricesState;
+}
+
+const configureStore = (initialState: ApplicationState): ApplicationState => (
+  createStore(reducer, initialState, applyMiddleware(thunkMiddleware))
+);
 
 export default configureStore;

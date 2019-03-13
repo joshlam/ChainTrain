@@ -55,7 +55,8 @@ module.exports = {
   "rules": {
     "react/display-name": 0,
     "react/prop-types": 0,
-    "@typescript-eslint/indent": ["error", 2]
+    "@typescript-eslint/indent": ["error", 2],
+    "@typescript-eslint/explicit-member-accessibility": 0
   },
   "settings": {
     "react": {
