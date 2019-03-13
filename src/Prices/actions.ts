@@ -22,7 +22,10 @@ function getCurrencies(): Promise<Currencies> {
 
           currencies[pair] = {
             name: NAMES[symbol],
-            symbol
+            pair,
+            symbol,
+            active: false,
+            trades: []
           };
         }
 
@@ -52,8 +55,30 @@ function getPrices(): Promise<Currency[]> {
   });
 }
 
+function getTrades(pair: string) {
+  return fetch(`https://api.kraken.com/0/public/Trades?pair=${pair}`, {
+    method: 'GET',
+    headers: { 'Content-Type': 'application/json' }
+  }).then(response => response.json())
+    .then(json => {
+      return json.result[pair].map(trade => {
+        return { price: Number(trade[0]), time: trade[2] };
+      });
+    });
+}
+
 export const fetchPrices = () => dispatch => {
   return getPrices()
     .then(json => dispatch({ type: actionTypes.FETCH_SUCCESS, json }))
     .catch(() => dispatch({ type: actionTypes.FETCH_ERROR }));
+};
+
+export const toggleCapsule = (symbol: string) => {
+  return { type: actionTypes.TOGGLE_CAPSULE, symbol };
+};
+
+export const fetchTrades = (pair: string) => dispatch => {
+  return getTrades(pair)
+    .then(json => dispatch({ type: actionTypes.FETCH_TRADES_SUCCESS, pair, json }))
+    .catch(() => dispatch({ type: actionTypes.FETCH_TRADES_ERROR, pair }));
 };

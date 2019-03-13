@@ -21,6 +21,9 @@ export default class List extends Component<Props> {
                 name={currency.name}
                 symbol={currency.symbol}
                 price={currency.price}
+                active={currency.active}
+                pair={currency.pair}
+                trades={currency.trades}
               />
             );
           }
