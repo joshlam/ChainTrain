@@ -1,0 +1,3 @@
+rootProject.name = 'ChainTrain'
+
+include ':app'
