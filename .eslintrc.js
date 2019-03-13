@@ -14,6 +14,29 @@ module.exports = {
     "SharedArrayBuffer": "readonly",
     "__filenamespace": false
   },
+  "overrides": [
+    {
+      "env": {
+        "jest": true
+      },
+      "files": ["**/__tests__/**/*.ts", "**/__tests__/**/*.tsx"],
+      "plugins": [
+        "jest"
+      ],
+      "rules": {
+        "jest/no-alias-methods": "warn",
+        "jest/no-disabled-tests": "warn",
+        "jest/no-focused-tests": "error",
+        "jest/no-identical-title": "error",
+        "jest/no-jest-import": "error",
+        "jest/no-jasmine-globals": "warn",
+        "jest/no-test-prefixes": "error",
+        "jest/valid-describe": "error",
+        "jest/valid-expect": "error",
+        "jest/valid-expect-in-promise": "error"
+      }
+    }
+  ],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
     "ecmaFeatures": {
@@ -21,7 +44,8 @@ module.exports = {
     },
     "ecmaVersion": 2018,
     "project": "./tsconfig.json",
-    "sourceType": "module"
+    "sourceType": "module",
+    "useJSXTextNode": false
   },
   "plugins": [
     "react",
