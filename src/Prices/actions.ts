@@ -1,6 +1,7 @@
 import actionTypes from './action-types';
 import { Currency } from './types';
 import NAMES from 'src/constants/names';
+import createPollingAction from 'src/lib/redux/polling-action';
 
 interface Currencies {
   [pair: string]: Currency;
@@ -67,11 +68,12 @@ function getTrades(pair: string) {
     });
 }
 
-export const fetchPrices = () => dispatch => {
+export const fetchPrices = createPollingAction(dispatch => {
   return getPrices()
     .then(json => dispatch({ type: actionTypes.FETCH_SUCCESS, json }))
     .catch(() => dispatch({ type: actionTypes.FETCH_ERROR }));
-};
+
+}, 1000);
 
 export const toggleCapsule = (symbol: string) => {
   return { type: actionTypes.TOGGLE_CAPSULE, symbol };
