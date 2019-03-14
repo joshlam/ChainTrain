@@ -1,6 +1,6 @@
 import React from 'react';
 import { Component } from 'react';
-import { ScrollView } from 'react-native';
+import { FlatList, ScrollView } from 'react-native';
 
 import PriceCapsule from 'src/Prices/List/Capsule';
 import { Currency } from 'src/Prices/types';
@@ -9,25 +9,28 @@ interface Props {
   currencies: Currency[];
 }
 
+function keyExtractor(item: Currency): string {
+  return item.symbol;
+}
+
 export default class List extends Component<Props> {
   render() {
     return (
       <ScrollView>{
-        this.props.currencies.map(
-          (currency: Currency) => {
-            return (
-              <PriceCapsule
-                key={currency.name}
-                name={currency.name}
-                symbol={currency.symbol}
-                price={currency.price}
-                active={currency.active}
-                pair={currency.pair}
-                trades={currency.trades}
-              />
-            );
-          }
-        )
+        <FlatList
+          data={this.props.currencies}
+          keyExtractor={keyExtractor}
+          renderItem={({ item }) => (
+            <PriceCapsule
+              name={item.name}
+              symbol={item.symbol}
+              price={item.price}
+              active={item.active}
+              pair={item.pair}
+              trades={item.trades}
+            />
+          )}
+        />
       }</ScrollView>
     );
   }
