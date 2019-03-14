@@ -1,6 +1,6 @@
 import React from 'react';
 import { Component } from 'react';
-import { Image, Text, TouchableOpacity } from 'react-native';
+import { TouchableOpacity } from 'react-native';
 import { connect } from 'react-redux';
 import styled from 'styled-components/native';
 
@@ -20,9 +20,45 @@ interface Props {
 }
 
 const CapsuleView = styled.View`
+  backgroundColor: white
+  border-radius: 6px
+  margin: 10px
 `;
 
 const Header = styled.View`
+  borderBottomColor: rgb(229, 229, 229)
+  borderBottomWidth: 2px
+  flexDirection: row
+  justifyContent: space-between
+  padding: 10px
+`;
+
+const Currency = styled.View`
+  flexDirection: row
+`
+
+const Icon = styled.Image`
+  margin: 5px
+  marginRight: 10px
+`
+
+const Metadata = styled.View`
+  margin: 5px
+  justifyContent: center
+`;
+
+const Name = styled.Text`
+  fontWeight: 600
+`;
+
+const Symbol = styled.Text`
+  color: grey
+`;
+
+const Price = styled.Text`
+  fontWeight: 600
+  padding: 15px
+  textAlign: right
 `;
 
 export class Capsule extends Component<Props> {
@@ -35,14 +71,18 @@ export class Capsule extends Component<Props> {
 
     return (
       <CapsuleView>
-        <Header>
-          <TouchableOpacity onPress={this.handlePress}>
-            <Image source={ICONS[symbol]} />
-            <Text>{name}</Text>
-            <Text>{symbol}</Text>
-            <Text>${price}</Text>
-          </TouchableOpacity>
-        </Header>
+        <TouchableOpacity onPress={this.handlePress}>
+          <Header>
+            <Currency>
+              <Icon source={ICONS[symbol]} />
+              <Metadata>
+                <Name>{name}</Name>
+                <Symbol>{symbol}</Symbol>
+              </Metadata>
+            </Currency>
+            <Price>${price}</Price>
+          </Header>
+        </TouchableOpacity>
         {active ? <Graph pair={pair} trades={trades} /> : null}
       </CapsuleView>
     );

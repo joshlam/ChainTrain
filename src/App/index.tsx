@@ -6,10 +6,15 @@ import Prices from 'src/Prices';
 
 const Background = styled.View`
   backgroundColor: #e8e8e8
+  flex: 1
+`;
+
+const TopBuffer = styled.View`
+  marginTop: 25px
 `;
 
 export default class App extends Component {
   render() {
-    return <Background><Prices /></Background>;
+    return <Background><TopBuffer /><Prices /></Background>;
   }
 }

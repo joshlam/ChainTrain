@@ -3,6 +3,7 @@ export default Object.freeze({
   BCH: 'Bitcoin Cash',
   BSV: 'Bitcoin SV',
   DASH: 'Dash',
+  EOS: 'EOS',
   ETC: 'Ethereum Classic',
   ETH: 'Ethereum',
   GNO: 'Gnosis',
